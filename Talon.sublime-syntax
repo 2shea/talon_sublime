@@ -1,0 +1,50 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: Talon
+file_extensions: [talon]
+scope: source.talon
+variables:
+  illegal_names: (?:and|as|assert|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|not|or|pass|raise|return|try|while|with|yield)
+  identifier: '\b[[:alpha:]_]{{identifier_continue}}*\b'
+  identifier_continue: '[[:alnum:]_]'
+  string: |-
+    (?x:
+      [urfb]*"(?:\\.|[^"])*" # strings
+    )*
+contexts:
+  main:
+    - include: comments
+
+  # voice command
+    - match: ^(\S[^:#]*)(?=:)
+      push: voice_command
+
+    # single quoted string
+    - match: "('(?:\\.|[^'])*')"
+      captures:
+        1: string.quoted.double
+
+    # double quoted string
+    - match: '("(?:\\.|[^"])*")'
+      captures:
+        1: string.quoted.double
+
+    # function calls
+    - match: (\b[\w-._]+\b)(?=\()
+      scope: keyword
+
+  voice_command:
+    - meta_scope: constant.numeric
+    - match: '\:'
+      pop: true
+    - include: main
+
+  comments:
+    - match: "#"
+      scope: punctuation.definition.comment
+      push:
+        - meta_scope: comment.line.number-sign
+        - match: \n
+          pop: true
+
