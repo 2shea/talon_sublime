@@ -14,7 +14,8 @@ git clone git@github.com:2shea/talon_sublime.git
 ```
 Restart Sublime. Talon should appear in the list of supported languages for syntax highlighting.
 
-Sample:
+## Sample:
+
 <img width="587" alt="image" src="https://user-images.githubusercontent.com/3289426/114251147-d680cd00-9954-11eb-9520-287f9f938a7b.png">
 
 # Troubleshooting
