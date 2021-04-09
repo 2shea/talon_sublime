@@ -4,7 +4,7 @@ Various metadata and settings for TalonScript in Sublime Text 3:
 - Comments metadata.
 
 ```
-cd ~/Library/Application Support/Sublime\ Text\ 3/Packages
+cd ~/Library/Application\ Support/Sublime\ Text\ 3/
 git clone git@github.com:2shea/talon_sublime.git
 ```
 
